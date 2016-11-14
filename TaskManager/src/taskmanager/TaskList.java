@@ -1,17 +1,24 @@
 package taskmanager;
 
+import java.util.ArrayList;
+
 public class TaskList {
-    private final int MAX_TASK = 10;
-    Task[] tasks = new Task[MAX_TASK];
-    private int index = 0;
+    
+    private ArrayList<Task> tasks = new ArrayList<Task>();
     String name;
     
     public TaskList(String name) {
         this.name = name;
     }
     
-    public void addTask(Task task){
-        this.tasks[index] = task;
-        this.index++;
+    public void addTask(Task task) {
+       tasks.add(task);
     }
+    
+    public void printTasks() {
+        for(Task t: tasks){
+        t.printTask();
+        }
+    }
+    
 }

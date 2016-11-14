@@ -1,16 +1,11 @@
 package taskmanager;
 
-import java.util.Date;
-import java.util.Calendar;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
 public class Task implements SetTask {
     private int MAX_CONTACTS = 5;
     private int index = 0;
     String name;
     String description;
-    Calendar date;
+    String date;
     Contact[] contacts = new Contact[MAX_CONTACTS];
     
     public Task(String name) {
@@ -29,7 +24,7 @@ public class Task implements SetTask {
     }
     
     @Override
-    public void setDate(Calendar date) {
+    public void setDate(String date) {
         this.date = date;
     }
     
@@ -37,6 +32,15 @@ public class Task implements SetTask {
     public void addContact(Contact contact) {
         this.contacts[index] = contact;
         this.index++;
+    }
+    
+    public void printTask() {
+        System.out.println(this.name);
+        System.out.println(this.description);
+        System.out.println("Напоминание: " + this.date);
+        for (int i = 0; i < index; i++) {
+            contacts[i].printContact();
+        }
     }
     
 }
