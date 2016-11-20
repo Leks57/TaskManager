@@ -1,17 +1,16 @@
 package taskmanager;
 
+import java.util.*;
+
 public class Task implements SetTask {
-    private int MAX_CONTACTS = 5;
-    private int index = 0;
     String name;
     String description;
     String date;
-    Contact[] contacts = new Contact[MAX_CONTACTS];
+    List<Contact> contacts = new ArrayList<Contact>();
     
     public Task(String name) {
         this.name = name;
     }
-    
     
     @Override
     public void setName(String name) {
@@ -30,17 +29,20 @@ public class Task implements SetTask {
     
     @Override
     public void addContact(Contact contact) {
-        this.contacts[index] = contact;
-        this.index++;
+        this.contacts.add(contact);
+    }
+    
+    public void printContacts() {
+        for(Contact t: contacts){
+        t.printContact();
+        }
     }
     
     public void printTask() {
         System.out.println(this.name);
         System.out.println(this.description);
         System.out.println("Напоминание: " + this.date);
-        for (int i = 0; i < index; i++) {
-            contacts[i].printContact();
-        }
+        this.printContacts();
     }
     
 }

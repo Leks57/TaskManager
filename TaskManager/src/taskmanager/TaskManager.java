@@ -1,10 +1,9 @@
 package taskmanager;
 
+import java.util.Scanner;
+
 public class TaskManager {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         TaskList tasks = new TaskList("Tasks");
@@ -30,7 +29,6 @@ public class TaskManager {
         tasks.addTask(task2);
         
         tasks.printTasks();
-
     }
     
 }
