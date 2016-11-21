@@ -6,7 +6,7 @@ public class TaskList {
     
     private ArrayList<Task> tasks = new ArrayList<Task>();
     String name;
-    
+
     public TaskList(String name) {
         this.name = name;
     }
@@ -15,8 +15,8 @@ public class TaskList {
        tasks.add(task);
     }
     
-    public void printTasks() {
-        for(Task t: tasks){
+    public void printTasks(TaskList taskList) {
+        for(Task t: taskList.tasks){
         t.printTask();
         }
     }

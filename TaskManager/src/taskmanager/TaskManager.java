@@ -1,11 +1,12 @@
 package taskmanager;
 
 import java.util.Scanner;
+import java.io.IOException;
 
 public class TaskManager {
 
     public static void main(String[] args) {
-
+        
         TaskList tasks = new TaskList("Tasks");
         
         Contact man1 = new Contact("Brus", "Willis", 911);
@@ -28,7 +29,22 @@ public class TaskManager {
         tasks.addTask(task1);
         tasks.addTask(task2);
         
-        tasks.printTasks();
+        
+        Menu menu = new Menu();
+        
+        // Добавляем пункт меню PrintTasks
+        menu.getEntries().add(new MenuEntry("2 - PrintTasks") {
+            @Override
+            public void run() {
+                for (int i=0; i<25; i++)
+                System.out.println();
+                System.out.println("Текущие задачи:");
+                tasks.printTasks(tasks);
+            }
+        });
+        
+        
+        menu.run();
     }
     
 }
