@@ -1,18 +1,15 @@
 package taskmanager;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class TaskList {
     
-    private ArrayList<Task> tasks = new ArrayList<Task>();
-    String name;
+    private List<Task> tasks = new ArrayList<Task>();
 
-    public TaskList(String name) {
-        this.name = name;
-    }
+    public TaskList() {}
     
     public void addTask(Task task) {
-       tasks.add(task);
+       this.tasks.add(task);
     }
     
     public void printTasks(TaskList taskList) {
