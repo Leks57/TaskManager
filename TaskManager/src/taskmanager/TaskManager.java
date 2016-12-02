@@ -66,16 +66,33 @@ try {
     Element root = doc.createElement("Задачи");
     doc.appendChild(root);
 
-    Element item1 = doc.createElement("Задача");
-    item1.setAttribute("Название", "1");
-    item1.setAttribute("Описание", "1");
-    item1.setAttribute("Дата", "1");
-    Element contact = doc.createElement("Контакты");
-    contact.setAttribute("Контакт1", "1");
-    contact.setAttribute("Контакт2", "2");
-    item1.appendChild(contact);
-    root.appendChild(item1);
-
+    Element taskNo1 = doc.createElement("Задача");
+    root.appendChild(taskNo1);
+    
+    Element taskName = doc.createElement("Название");
+    taskName.appendChild(doc.createTextNode("Название задачи 1"));
+    Element taskDescription = doc.createElement("Описание");
+    taskDescription.appendChild(doc.createTextNode("Описание задачи 1"));
+    Element taskDate = doc.createElement("Дата");
+    taskDate.appendChild(doc.createTextNode("Дата задачи 1"));
+    Element taskContact = doc.createElement("Контакт");
+    
+    Element taskContactName = doc.createElement("Имя");
+    taskContactName.appendChild(doc.createTextNode("Имя 1"));
+    Element taskContactSurname = doc.createElement("Фамилия");
+    taskContactSurname.appendChild(doc.createTextNode("Фамилия 1"));
+    Element taskContactPhone = doc.createElement("Телефон");
+    taskContactPhone.appendChild(doc.createTextNode("Телефон 1"));
+    
+    taskContact.appendChild(taskContactName);
+    taskContact.appendChild(taskContactSurname);
+    taskContact.appendChild(taskContactPhone);
+    
+    taskNo1.appendChild(taskName);
+    taskNo1.appendChild(taskDescription);
+    taskNo1.appendChild(taskDate);
+    taskNo1.appendChild(taskContact);
+    
     File file = new File("C:\\test.xml");
  
     Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -85,8 +102,8 @@ try {
         e.printStackTrace();
       }
 
-     
-     
+
+/*
      try {
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
@@ -100,13 +117,14 @@ try {
             NodeList listOfTasks = doc.getElementsByTagName("Задача");
             int totalTasks = listOfTasks.getLength();
             System.out.println("Общее кол-во задач: " + totalTasks);
-/*
+            
+
             for(int s=0; s<listOfTasks.getLength() ; s++){
                 Node firstTaskNode = listOfTasks.item(s);
                 if(firstTaskNode.getNodeType() == Node.ELEMENT_NODE){
                     Element firstPersonElement = (Element)firstTaskNode;
                     //-------
-                    NodeList firstNameList = firstPersonElement.getElementsByTagName("Название");
+                    NodeList firstNameList = firstPersonElement.getElementsByTagName("Задача");
                     Element firstNameElement = (Element)firstNameList.item(0);
 
                     NodeList textFNList = firstNameElement.getChildNodes();
@@ -128,7 +146,7 @@ try {
                            ((Node)textAgeList.item(0)).getNodeValue().trim());
                     //------
                 }//end of if clause
-            }//end of for loop with s var */
+            }//end of for loop with s var 
         }catch (SAXParseException err) {
         System.out.println ("** Parsing error" + ", line " 
              + err.getLineNumber () + ", uri " + err.getSystemId ());
@@ -142,7 +160,7 @@ try {
         t.printStackTrace ();
         }
         //System.exit (0);
-     
+     */
      
     }
     
