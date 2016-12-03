@@ -4,14 +4,22 @@ import java.util.*;
 
 public class Task implements SetTask {
     String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDate() {
+        return date;
+    }
     String description;
     String date;
     List<Contact> contacts = new ArrayList<Contact>();
-    
-    public Task(String name) {
-        this.name = name;
-    }
-    
+
     @Override
     public void setName(String name) {
         this.name = name;
