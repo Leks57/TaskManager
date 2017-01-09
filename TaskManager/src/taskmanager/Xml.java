@@ -167,7 +167,7 @@ public static void editTask(String pathFile, int taskNo) {
 }
 
 
-public static void saveXml(TaskList taskList, String pathFile) {
+public static void saveXml(String pathFile) {
         
         
     try {    
@@ -231,7 +231,7 @@ public static void saveXml(TaskList taskList, String pathFile) {
     }
 
 
-    public static void readXml(String pathFile, TaskList tasks) {
+    public static void readXml() {
     
         try {
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -290,7 +290,7 @@ public static void saveXml(TaskList taskList, String pathFile) {
                                 task1.addContact(contact1);
                             }
                         }
-                        tasks.addTask(task1);
+                        TaskList.addTask(task1);
                 }
                 }
             }catch (SAXParseException err) {

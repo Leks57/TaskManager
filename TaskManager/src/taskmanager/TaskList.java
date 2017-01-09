@@ -4,43 +4,43 @@ import java.util.*;
 
 public class TaskList {
     
-    private List<Task> tasks = new ArrayList<Task>();
+    private static List<Task> tasks = new ArrayList<Task>();
 
-    public List<Task> getTasks() {
+    public static List<Task> getTasks() {
         return tasks;
     }
 
     public TaskList() {}
     
-    public void addTask(Task task) {
-       this.tasks.add(task);
+    public static void addTask(Task task) {
+       tasks.add(task);
     }
     
-    public void printTasks(TaskList taskList) {
-        for(Task t: taskList.tasks){
+    public void printTasks() {
+        for(Task t: this.tasks){
         t.printTask();
         }
     }
     
-    public void createTask(TaskList tasks) {
+    public void createTask() {
         Scanner sc = new Scanner(System.in);
-        Task task1 = new Task();
+        Task task = new Task();
         System.out.println("Введите название задачи: ");
-        task1.setName(sc.nextLine());
+        task.setName(sc.nextLine());
         System.out.println("Введите описание задачи: ");
-        task1.setDescription(sc.nextLine());
+        task.setDescription(sc.nextLine());
         System.out.println("Введите дату задачи: ");
-        task1.setDate(sc.nextLine());
+        task.setDate(sc.nextLine());
         
-        Contact contact1 = new Contact();
+        Contact contact = new Contact();
         System.out.println("Введите имя контакта: ");
-        contact1.setName(sc.nextLine());
+        contact.setName(sc.nextLine());
         System.out.println("Введите фамилию контакта: ");
-        contact1.setSurname(sc.nextLine());
+        contact.setSurname(sc.nextLine());
         System.out.println("Введите телефон контакта: ");
-        contact1.setPhone(sc.nextInt());
+        contact.setPhone(sc.nextInt());
         
-        task1.addContact(contact1);
-        tasks.addTask(task1);
+        task.addContact(contact);
+        addTask(task);
     }
 }

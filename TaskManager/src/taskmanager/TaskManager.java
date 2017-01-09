@@ -4,12 +4,14 @@ import java.io.File;
 
 public class TaskManager {
 
+    private static final String PathFile = "C:\\test.xml";
+    
     public static void main(String[] args) {
 
         TaskList tasks = new TaskList();
         File file = new File("C:\\test.xml");
         if (file.exists()) {
-            Xml.readXml("C:\\test.xml", tasks);
+            Xml.readXml();
         } else {
             System.out.println("Файл не существует.");
         }
@@ -36,8 +38,8 @@ public class TaskManager {
         menu.getEntries().add(new MenuEntry("3 - CreateTask") {
             @Override
             public void run() {
-                tasks.createTask(tasks);
-                Xml.saveXml(tasks, "C:\\test.xml");
+                tasks.createTask();
+                Xml.saveXml();
             }
         });
         
@@ -45,7 +47,7 @@ public class TaskManager {
         menu.getEntries().add(new MenuEntry("4 - EditTask") {
             @Override
             public void run() {
-                Xml.editTask("C:\\test.xml", 1);
+                Xml.editTask();
             }
         });
         
@@ -53,7 +55,7 @@ public class TaskManager {
         menu.getEntries().add(new MenuEntry("5 - SaveTaskList") {
             @Override
             public void run() {
-                Xml.saveXml(tasks, "C:\\test.xml");
+                Xml.saveXml();
             }
         });
         
