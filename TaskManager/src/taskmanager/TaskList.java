@@ -4,43 +4,72 @@ import java.util.*;
 
 public class TaskList {
     
-    private List<Task> tasks = new ArrayList<Task>();
+    private static List<Task> tasks = new ArrayList<Task>();
 
-    public List<Task> getTasks() {
+    public static List<Task> getTasks() {
         return tasks;
     }
 
     public TaskList() {}
     
-    public void addTask(Task task) {
-       this.tasks.add(task);
+    public static void addTask(Task task) {
+       tasks.add(task);
     }
     
-    public void printTasks(TaskList taskList) {
-        for(Task t: taskList.tasks){
+    public void printTasks() {
+        for(Task t: this.tasks){
         t.printTask();
         }
     }
     
-    public void createTask(TaskList tasks) {
+    public void createTask() {
         Scanner sc = new Scanner(System.in);
-        Task task1 = new Task();
+        Task task = new Task();
         System.out.println("Введите название задачи: ");
-        task1.setName(sc.nextLine());
+        task.setName(sc.nextLine());
         System.out.println("Введите описание задачи: ");
-        task1.setDescription(sc.nextLine());
+        task.setDescription(sc.nextLine());
         System.out.println("Введите дату задачи: ");
-        task1.setDate(sc.nextLine());
+        task.setDate(sc.nextLine());
         
-        Contact contact1 = new Contact();
+        Contact contact = new Contact();
         System.out.println("Введите имя контакта: ");
-        contact1.setName(sc.nextLine());
+        contact.setName(sc.nextLine());
         System.out.println("Введите фамилию контакта: ");
-        contact1.setSurname(sc.nextLine());
+        contact.setSurname(sc.nextLine());
         System.out.println("Введите телефон контакта: ");
-        contact1.setPhone(sc.nextInt());
+        contact.setPhone(sc.nextInt());
         
-        task1.addContact(contact1);
-        tasks.addTask(task1);
+        task.addContact(contact);
+        addTask(task);
+    }
+    
+    public void editTask() {
+        PrintLine.line();
+        for(Task t: this.tasks){
+        System.out.println(tasks.indexOf(t) + " - " + t.getName());
+        }
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите номер выбранной задачи: ");
+        int taskNumber = sc.nextInt();
+        tasks.get(taskNumber).printTask();
+        
+        System.out.println("Введите номер данных для изменения: ");
+        System.out.println("1 - Название задачи");
+        System.out.println("2 - Описание задачи");
+        System.out.println("3 - Дата события");
+        System.out.println("0 - Выход");
+        boolean notExit = true;
+        while(notExit) {
+        int userChoice = sc.nextInt();
+        switch(userChoice) {
+          case 1: tasks.get(taskNumber).setName(sc.nextLine()); break;
+          case 2: tasks.get(taskNumber).setDescription(sc.nextLine()); break;
+          case 3: tasks.get(taskNumber).setDate(sc.nextLine()); break;
+       //   case 4: tasks.get(taskNumber).addContact(sc.nextLine()); break;
+          case 0: notExit = false; break;
+        } // switch
+      }
     }
 }

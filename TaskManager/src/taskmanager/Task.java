@@ -3,21 +3,9 @@ package taskmanager;
 import java.util.*;
 
 public class Task implements SetTask {
-    String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getDate() {
-        return date;
-    }
-    String description;
-    String date;
+    private String name;
+    private String description;
+    private String date; // calendar или date
     List<Contact> contacts = new ArrayList<Contact>();
 
     @Override
@@ -51,6 +39,18 @@ public class Task implements SetTask {
         System.out.println(this.description);
         System.out.println("Напоминание: " + this.date);
         this.printContacts();
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDate() {
+        return date;
     }
     
 }

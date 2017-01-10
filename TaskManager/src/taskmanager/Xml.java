@@ -88,61 +88,14 @@ public abstract class Xml {
         t.printStackTrace ();
         }
 }
-    /*
-public static void save(String pathFile) {
-    try {   
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    Document doc = factory.newDocumentBuilder().newDocument();
-
-    Element root = doc.createElement("Задачи");
-    doc.appendChild(root);
-
-    Element taskNo1 = doc.createElement("Задача");
-    root.appendChild(taskNo1);
-    
-    Element taskName = doc.createElement("Название");
-    taskName.appendChild(doc.createTextNode("Название задачи 1"));
-    Element taskDescription = doc.createElement("Описание");
-    taskDescription.appendChild(doc.createTextNode("Описание задачи 1"));
-    Element taskDate = doc.createElement("Дата");
-    taskDate.appendChild(doc.createTextNode("Дата задачи 1"));
-    Element taskContact = doc.createElement("Контакт");
-    
-    Element taskContactName = doc.createElement("Имя");
-    taskContactName.appendChild(doc.createTextNode("Имя 1"));
-    Element taskContactSurname = doc.createElement("Фамилия");
-    taskContactSurname.appendChild(doc.createTextNode("Фамилия 1"));
-    Element taskContactPhone = doc.createElement("Телефон");
-    taskContactPhone.appendChild(doc.createTextNode("Телефон 1"));
-    
-    taskContact.appendChild(taskContactName);
-    taskContact.appendChild(taskContactSurname);
-    taskContact.appendChild(taskContactPhone);
-    
-    taskNo1.appendChild(taskName);
-    taskNo1.appendChild(taskDescription);
-    taskNo1.appendChild(taskDate);
-    taskNo1.appendChild(taskContact);
-    
-    File file = new File(pathFile);
- 
-    Transformer transformer = TransformerFactory.newInstance().newTransformer();
-    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-    transformer.transform(new DOMSource(doc), new StreamResult(file));
-    } catch (Exception e) {
-        e.printStackTrace();
-      }
-}
-*/
 
 
-public static void editTask(String pathFile, int taskNo) {
+/*public static void editTask(int taskNo) {
     try {
         
     DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-    Document doc = docBuilder.parse (new File(pathFile));
+    Document doc = docBuilder.parse (new File(TaskManager.getPathFile()));
 
     // normalize text representation
     doc.getDocumentElement().normalize();
@@ -156,7 +109,7 @@ public static void editTask(String pathFile, int taskNo) {
                     (firstTask.getElementsByTagName("Название").item(0)).setTextContent("3455");
                     
                 }
-    File file = new File(pathFile);
+    File file = new File(TaskManager.getPathFile());
  
     Transformer transformer = TransformerFactory.newInstance().newTransformer();
     transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -164,10 +117,10 @@ public static void editTask(String pathFile, int taskNo) {
     } catch (Exception e) {
         e.printStackTrace();
       }
-}
+}*/
 
 
-public static void saveXml(TaskList taskList, String pathFile) {
+public static void saveXml() {
         
         
     try {    
@@ -179,7 +132,7 @@ public static void saveXml(TaskList taskList, String pathFile) {
     Element root = doc.createElement("Задачи");
     doc.appendChild(root);
     
-    for(Task t: taskList.getTasks()){
+    for(Task t: TaskList.getTasks()){
 
             Element taskName = doc.createElement("Название");
             taskName.appendChild(doc.createTextNode(t.getName()));
@@ -220,7 +173,7 @@ public static void saveXml(TaskList taskList, String pathFile) {
     
     
     
-    File file = new File(pathFile);
+    File file = new File(TaskManager.getPathFile());
  
     Transformer transformer = TransformerFactory.newInstance().newTransformer();
     transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -231,12 +184,12 @@ public static void saveXml(TaskList taskList, String pathFile) {
     }
 
 
-    public static void readXml(String pathFile, TaskList tasks) {
+    public static void readXml() {
     
         try {
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse (new File(pathFile));
+            Document doc = docBuilder.parse (new File(TaskManager.getPathFile()));
 
             // normalize text representation
             doc.getDocumentElement().normalize();
@@ -290,7 +243,7 @@ public static void saveXml(TaskList taskList, String pathFile) {
                                 task1.addContact(contact1);
                             }
                         }
-                        tasks.addTask(task1);
+                        TaskList.addTask(task1);
                 }
                 }
             }catch (SAXParseException err) {
@@ -309,5 +262,3 @@ public static void saveXml(TaskList taskList, String pathFile) {
 
 
 }
-
-

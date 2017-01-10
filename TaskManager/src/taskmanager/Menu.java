@@ -35,6 +35,7 @@ public class Menu {
                 // Выбираем нажатый пункт меню и выполняем его код
                 MenuEntry entry = (MenuEntry) entries.get(choice - 1);
                 entry.run();
+                PrintLine.line();
             } catch (IOException e) {
                 e.printStackTrace();
             }
