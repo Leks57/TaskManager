@@ -28,13 +28,7 @@ public class TaskManager {
         menu.getEntries().add(new MenuEntry("2 - PrintTasks") {
             @Override
             public void run() {
-                /*for (int i=0; i<25; i++)
-                System.out.println();
-                System.out.println("Текущие задачи:");
-                tasks.printTasks(tasks);*/
-                for (int i=0; i<25; i++)
-                System.out.println();
-                Xml.read("C:\\test.xml");
+                tasks.printTasks();
             }
         });
         

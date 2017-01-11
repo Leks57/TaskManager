@@ -18,6 +18,7 @@ public class Menu {
             @Override
             public void run() {
                 isExit = true;
+                Xml.saveXml();
             }
         });
         
