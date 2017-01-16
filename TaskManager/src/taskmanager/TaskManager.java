@@ -57,6 +57,14 @@ public class TaskManager {
             }
         });
         
+        // Добавляем пункт меню Timer
+        menu.getEntries().add(new MenuEntry("6 - Timer") {
+            @Override
+            public void run() {
+                ScheduledTask.start();
+            }
+        });        
+        
         menu.run();
         
 
