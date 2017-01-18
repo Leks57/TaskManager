@@ -61,7 +61,8 @@ public class TaskManager {
         menu.getEntries().add(new MenuEntry("6 - Timer") {
             @Override
             public void run() {
-                ScheduledTask.start();
+                Thread t = new Thread(new ScheduledTask());
+                t.start();
             }
         });        
         
