@@ -2,28 +2,24 @@ package taskmanager;
 
 import java.util.*;
 
-public class Task implements SetTask {
+public class Task {
     private String name;
     private String description;
-    private String date; // calendar или date
+    private Date date; // calendar или date
     List<Contact> contacts = new ArrayList<Contact>();
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }
     
-    @Override
     public void setDescription(String description) {
         this.description = description;
     }
     
-    @Override
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     
-    @Override
     public void addContact(Contact contact) {
         this.contacts.add(contact);
     }
@@ -49,7 +45,7 @@ public class Task implements SetTask {
         return description;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
     

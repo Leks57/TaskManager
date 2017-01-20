@@ -1,8 +1,17 @@
 package taskmanager;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TaskManager {
+    
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private static final String pathFile = "C:\\test.xml";
 
@@ -61,8 +70,17 @@ public class TaskManager {
         menu.getEntries().add(new MenuEntry("6 - Timer") {
             @Override
             public void run() {
-                Thread t = new Thread(new ScheduledTask());
+                ScheduledTask newTask = new ScheduledTask();
+                Date alarm = null;
+                try {
+                    alarm = TaskManager.DATE_FORMAT.parse("2017-01-20 16:39:30");
+                } catch (ParseException ex) {
+                    Logger.getLogger(TaskManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                newTask.setAlarm(alarm);
+                Thread t = new Thread(newTask);
                 t.start();
+                
             }
         });        
         

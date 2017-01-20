@@ -1,6 +1,9 @@
 package taskmanager;
 
+import java.text.ParseException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TaskList {
     
@@ -29,8 +32,12 @@ public class TaskList {
         task.setName(sc.nextLine());
         System.out.println("Введите описание задачи: ");
         task.setDescription(sc.nextLine());
-        System.out.println("Введите дату задачи: ");
-        task.setDate(sc.nextLine());
+        System.out.println("Введите дату задачи в формате yyyy-MM-dd HH:mm:ss");
+        try {
+            task.setDate(TaskManager.DATE_FORMAT.parse(sc.nextLine()));
+        } catch (ParseException ex) {
+            Logger.getLogger(TaskList.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         Contact contact = new Contact();
         System.out.println("Введите имя контакта: ");
@@ -69,7 +76,14 @@ public class TaskList {
         switch(userChoice) {
           case 1: System.out.println("Введите новое название:"); tasks.get(taskNumber).setName(scLine.nextLine()); break;
           case 2: System.out.println("Введите новое описание:"); tasks.get(taskNumber).setDescription(scLine.nextLine()); break;
-          case 3: System.out.println("Введите новую дату:"); tasks.get(taskNumber).setDate(scLine.nextLine()); break;
+          case 3: System.out.println("Введите новую дату:"); {
+            try {
+                tasks.get(taskNumber).setDate(TaskManager.DATE_FORMAT.parse(scLine.nextLine()));
+            } catch (ParseException ex) {
+                Logger.getLogger(TaskList.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        break;
        //   case 4: tasks.get(taskNumber).addContact(sc.nextLine()); break;
           case 0: break;
         } // switch
