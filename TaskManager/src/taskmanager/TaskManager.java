@@ -70,16 +70,17 @@ public class TaskManager {
         menu.getEntries().add(new MenuEntry("6 - Timer") {
             @Override
             public void run() {
-                ScheduledTask newTask = new ScheduledTask();
-                Date alarm = null;
-                try {
-                    alarm = TaskManager.DATE_FORMAT.parse("2017-01-20 16:39:30");
-                } catch (ParseException ex) {
-                    Logger.getLogger(TaskManager.class.getName()).log(Level.SEVERE, null, ex);
+                for(Task z: TaskList.getTasks()){
+                    Date now = new Date();
+                    if (now.compareTo(z.getDate()) <= 0) {
+                        ScheduledTask newTask = new ScheduledTask();
+                        System.out.println("Установлено напоминание на: " + z.getDate());
+                        newTask.setAlarm(z.getDate());
+                        Thread t = new Thread(newTask);
+                        t.start();
+                    }
                 }
-                newTask.setAlarm(alarm);
-                Thread t = new Thread(newTask);
-                t.start();
+                
                 
             }
         });        

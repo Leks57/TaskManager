@@ -8,12 +8,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
  
 public class ScheduledTask extends TimerTask {
-    public static Date alarm;
+    private Date alarm;
 
-    public static void setAlarm(Date alarm) {
-        ScheduledTask.alarm = alarm;
+    public void setAlarm(Date alarm) {
+        this.alarm = alarm;
     }
-    public static Date getAlarm() {
+    
+    public Date getAlarm() {
         return alarm;
     }
     
